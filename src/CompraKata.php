@@ -16,7 +16,7 @@ class CompraKata {
                 $cantidad = isset($partes[2]) && is_numeric($partes[2]) ? (int)$partes[2] : 1;
                 $this->productos[$nombre] = ($this->productos[$nombre] ?? 0) + $cantidad;
                 break;
- 
+
             case 'eliminar':
                 if (count($partes) < 2) return $this->formatearLista();
                 $nombre = $partes[1];

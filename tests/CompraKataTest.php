@@ -19,7 +19,7 @@ class CompraKataTest extends TestCase
     /**
     * @test
     */
-    public function addPanReturnsPanX1(): void
+    public function addProductReturnsProductX1(): void
     {
         $result = $this->compra->convert("añadir pan");
         $this->assertEquals("pan x1", $result);
@@ -28,38 +28,28 @@ class CompraKataTest extends TestCase
     /**
     * @test
     */
-    public function addPanTwoReturnsPanX2(): void
+    public function addProductTwoReturnsProductX2(): void
     {
-        $result = $this->compra->convert("añadir Pan 2");
-        $this->assertEquals("pan x2", $result);
-    }
-    
-    /**
-    * @test
-    */
-    public function addLecheTwoReturnsLecheX2(): void
-    {
-        $result = $this->compra->convert("añadir leche 2");
+        $result = $this->compra->convert("añadir Leche 2");
         $this->assertEquals("leche x2", $result);
     }
     
     /**
     * @test
     */
-    public function removePanReturnsNoPan(): void
+    public function removeProductReturnsNoProduct(): void
     {
-        $result = $this->compra->convert("eliminar pan");
+        $result = $this->compra->convert("eliminar arroz");
         $this->assertEquals("El producto seleccionado no existe", $result);
     }
     
     /**
     * @test
     */
-    public function emptyReturns(): void
+    public function emptyReturnsAnEmptyString(): void
     {
         $result = $this->compra->convert("vaciar");
         $this->assertEquals("", $result);
     }
-    
 
 }
