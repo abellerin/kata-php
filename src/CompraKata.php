@@ -5,7 +5,7 @@ namespace Deg540\DockerPHPBoilerplate;
 class CompraKata {
     private array $productos = [];
 
-    public function procesarInstruccion(string $instruccion): string {
+    public function convert(string $instruccion): string {
         $partes = explode(' ', strtolower(trim($instruccion)));
         $accion = $partes[0];
 
@@ -16,7 +16,7 @@ class CompraKata {
                 $cantidad = isset($partes[2]) && is_numeric($partes[2]) ? (int)$partes[2] : 1;
                 $this->productos[$nombre] = ($this->productos[$nombre] ?? 0) + $cantidad;
                 break;
-
+ 
             case 'eliminar':
                 if (count($partes) < 2) return $this->formatearLista();
                 $nombre = $partes[1];
@@ -42,13 +42,19 @@ class CompraKata {
     }
 }
 
-$lista = new ListaCompra();
-echo $lista->procesarInstruccion("añadir pan");
+
+// Ejemplo de flujo: cómo se irían agregando los productos de forma acumulativa, es decir,
+// si se añade el mismo producto varias veces, se suman las cantidades
+// y si se elimina, se eliminan las cantidades acumuladas
+$lista = new CompraKata();
+echo $lista->convert("añadir pan"); // "pan x1"
 echo "\n";
-echo $lista->procesarInstruccion("añadir Pan 2");
+echo $lista->convert("añadir leche 2"); // "leche x2, pan x1"
 echo "\n";
-echo $lista->procesarInstruccion("añadir leche 2");
+echo $lista->convert("añadir Pan 2"); // "leche x2, pan x3"
 echo "\n";
-echo $lista->procesarInstruccion("eliminar pan");
+echo $lista->convert("eliminar arroz"); // "El producto seleccionado no existe"
 echo "\n";
-echo $lista->procesarInstruccion("vaciar");
+echo $lista->convert("eliminar pan"); // "leche x2"
+echo "\n";
+echo $lista->convert("vaciar"); // ""
