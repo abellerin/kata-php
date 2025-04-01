@@ -51,5 +51,4 @@ class CompraKataTest extends TestCase
         $result = $this->compra->convert("vaciar");
         $this->assertEquals("", $result);
     }
-
 }
