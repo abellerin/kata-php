@@ -19,7 +19,7 @@ class CompraKataTest extends TestCase
     /**
     * @test
     */
-    public function addProductReturnsProductX1(): void
+    public function addProductWithoutQuantityReturnsProductX1(): void
     {
         $result = $this->compra->convert("añadir pan");
         $this->assertEquals("pan x1", $result);
