@@ -23,4 +23,3 @@ stop:
 clean: stop
 	docker rm kata-php
 	rm -rf vendor
-

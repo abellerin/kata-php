@@ -28,7 +28,7 @@ class CompraKataTest extends TestCase
     /**
     * @test
     */
-    public function addProductTwoReturnsProductX2(): void
+    public function addProductTwoWithCapitalLetterReturnsProductX2(): void
     {
         $result = $this->compra->convert("añadir Leche 2");
         $this->assertEquals("leche x2", $result);
