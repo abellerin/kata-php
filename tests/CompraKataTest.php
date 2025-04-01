@@ -37,7 +37,7 @@ class CompraKataTest extends TestCase
     /**
     * @test
     */
-    public function removeProductReturnsNoProduct(): void
+    public function removeProductReturnsProductDoesNotExist(): void
     {
         $result = $this->compra->convert("eliminar arroz");
         $this->assertEquals("El producto seleccionado no existe", $result);
